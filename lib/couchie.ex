@@ -263,7 +263,7 @@ defmodule Couchie do
 
 	"""
 	def query(connection, query) do
-		query = "statement=#{query}" |> to_char_list
+		query = "statement=#{query}" |> to_charlist
 		case :cberl.http(connection, '', query, 'application/x-www-form-urlencoded; charset=UTF-8', :post, :n1ql) do
 			{:ok, 200, result} ->
 				results = Poison.decode!(result)
